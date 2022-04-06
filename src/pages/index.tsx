@@ -1,12 +1,12 @@
-import type {NextPage} from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import {useState} from 'react';
-import {SearchForm} from '../components/search-form';
-import styles from '../styles/Home.module.css';
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import { useState } from "react";
+import { SearchForm } from "../components/search-form";
+import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const [channelId, setChannelId] = useState('');
+  const [channelId, setChannelId] = useState("");
   return (
     <div className={styles.container}>
       <Head>
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>Welcome to YTRR!</h1>
         <SearchForm
           keyword={channelId}
-          placeholder={'チャンネルIDを入力'}
+          placeholder={"チャンネルIDを入力"}
           onChangeInputVal={(e) => setChannelId(e.target.value)}
         />
       </main>
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>

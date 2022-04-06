@@ -1,6 +1,6 @@
-import type {FontSizeType} from '../const/style';
-import {COLOR_CODE, FONT_SIZE} from '../const/style';
-import styled from '@emotion/styled';
+import type { FontSizeType } from "../const/style";
+import { COLOR_CODE, FONT_SIZE } from "../const/style";
+import styled from "@emotion/styled";
 
 export const LabelRoot = styled.label`
   display: inline-flex;
@@ -20,7 +20,7 @@ export const InputField = styled.input<{
 }>`
   padding: 10px;
   width: 100%;
-  font-size: ${({fontSize}) => `${FONT_SIZE[fontSize]}px`};
+  font-size: ${({ fontSize }) => `${FONT_SIZE[fontSize]}px`};
 
   &:disabled {
     opacity: 0.5;
