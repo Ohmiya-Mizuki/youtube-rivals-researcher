@@ -10,9 +10,15 @@ type SearchFormProps = {
   placeholder: HTMLInputElement['placeholder'];
   /** inputの変更処理 */
   onChangeInputVal: (e: ChangeEvent<HTMLInputElement>) => void;
+  keyPress: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 } & JSX.IntrinsicElements['form']
 
-export const SearchForm = ( {keyword, placeholder, onChangeInputVal}: SearchFormProps ) => {
+export const SearchForm = ({
+  keyword,
+  placeholder,
+  onChangeInputVal,
+  keyPress,
+}: SearchFormProps) => {
   return (
     <FormWrapper>
       <Input
@@ -21,12 +27,12 @@ export const SearchForm = ( {keyword, placeholder, onChangeInputVal}: SearchForm
         placeholder={placeholder}
         value={keyword}
         onChange={onChangeInputVal}
+        onKeyDown={keyPress}
         inputProps={{
-          'aria-label': '検索フォーム',
+          "aria-label": "検索フォーム",
         }}
       />
-      {/* TODO: 押下時に検索するようにする？ 仕様が固まり次第見直し */}
-      <button type="submit" aria-label="検索ボタン">
+      <button onClick={onChangeInputVal} type="submit" aria-label="検索ボタン">
         検索
       </button>
     </FormWrapper>
