@@ -1,9 +1,31 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { SearchForm } from "../components/search-form";
+import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
+  const [channelId, setChannelId] = useState("");
+  const router = useRouter();
+
+  const clickButton = () => {
+    //未入力の時
+    if (!channelId) {
+      return;
+    }
+
+    router.push({
+      pathname: "/result", //URL
+      query: { channelId: channelId }, //検索クエリ
+    });
+  };
+
+  const keyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === "13") clickButton();
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,44 +35,25 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <h1 className={styles.title}>Welcome to YTRR!</h1>
+        <input
+          type="text"
+          value={channelId}
+          onChange={(e) => setChannelId(e.target.value)}
+          /*変更時keywordに値をセット  */
+          onKeyPress={(e) => keyPress(e)}
+          className="w-4/5 h-12 border-2 p-4"
+          placeholder="Search"
+        />
+        <button
+          onClick={clickButton}
+          disabled={!channelId}
+          className="bg-base-color w-1/5"
+        >
+          {" "}
+          {/*入力項目が未入力の場合、非活性*/}
+          検索
+        </button>
       </main>
 
       <footer className={styles.footer}>
@@ -59,14 +62,14 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
