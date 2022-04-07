@@ -3,7 +3,6 @@ import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { SearchForm } from "../components/search-form";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
