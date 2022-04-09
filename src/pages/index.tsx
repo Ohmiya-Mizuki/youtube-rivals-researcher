@@ -1,27 +1,26 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import styles from "@/styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const [channelId, setChannelId] = useState("");
-  const router = useRouter();
+  // const [channelId, setChannelId] = useState("");
+  // const router = useRouter();
 
-  const clickButton = () => {
-    //未入力の時
-    if (!channelId) {
-      return;
-    }
+  // const clickButton = () => {
+  //   //未入力の時
+  //   if (!channelId) {
+  //     return;
+  //   }
 
-    router.push({
-      pathname: "/result", //URL
-      query: { channelId: channelId }, //検索クエリ
-    });
-  };
+  //   router.push({
+  //     pathname: "/result", //URL
+  //     query: { channelId: channelId }, //検索クエリ
+  //   });
+  // };
 
-  const keyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === "13") clickButton();
-  };
+  // const keyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  //   if (e.code === "13") clickButton();
+  // };
 
   return (
     // <div className={styles.container}>
