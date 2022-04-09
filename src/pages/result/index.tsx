@@ -1,8 +1,7 @@
-import { useRouter } from "next/router";
 
 const Result = () => {
-  const router = useRouter();
-  const channelId = router.query.channelId;
+  // const router = useRouter();
+  // const channelId = router.query.channelId;
   // const { data, error } = useSWR(channelId, researchChannel);
 
   // if (error)
