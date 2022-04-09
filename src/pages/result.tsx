@@ -9,7 +9,8 @@ const Result = () => {
   const router = useRouter();
   const channelId = router.query.channelId;
   const { data, error } = useSWR(channelId, researchChannel);
-
+  console.log("data", data);
+  
   if (error)
     return (
       <div className={styles.container}>
