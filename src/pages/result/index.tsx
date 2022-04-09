@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
-import styles from "../styles/Home.module.css";
+import styles from "@/styles/Home.module.css";
 import Head from "next/head";
 import useSWR from "swr";
-import { researchChannel } from "../api/researchChannel";
+import { researchChannel } from "@/pages/api/researchChannel";
 import Image from "next/image";
 
 const Result = () => {
@@ -10,7 +10,7 @@ const Result = () => {
   const channelId = router.query.channelId;
   const { data, error } = useSWR(channelId, researchChannel);
   console.log("data", data);
-  
+
   if (error)
     return (
       <div className={styles.container}>
@@ -105,4 +105,4 @@ const Result = () => {
   );
 };
 
-export default Result
+export default Result;
