@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 import Head from "next/head";
 import useSWR from "swr";
-import { researchChannel } from "./api/researchChannel";
+import { researchChannel } from "../api/researchChannel";
 import Image from "next/image";
 
 const Result = () => {
