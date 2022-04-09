@@ -1,3 +1,4 @@
+import { SearchResultVideo } from "@/types/youtube";
 
 const { Client } = require("@notionhq/client");
 
@@ -11,12 +12,12 @@ export const researchChannel = async (channelId: string) => {
   return bestVideoList;
 };
 
-const writeNotion = async (bestVideoList) => {
+const writeNotion = async (bestVideoList: SearchResultVideo[]) => {
   const notion = new Client({
     auth: process.env.NEXT_PUBLIC_NOTION_TOKEN,
   });
   console.log("NOTION_TOKEN", process.env.NEXT_PUBLIC_NOTION_TOKEN);
-  
+
   const bookmarksjson = bestVideoList.map((video) => {
     return {
       object: "block",
@@ -25,8 +26,8 @@ const writeNotion = async (bestVideoList) => {
         url: `https://www.youtube.com/watch?v=${video.id.videoId}`,
       },
     };
-  })
-  
+  });
+
   const response = await notion.pages.create({
     parent: {
       page_id: "YouTuber-10-82a996c023c44c109d906e7aed8598ef",
