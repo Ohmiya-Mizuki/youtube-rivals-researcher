@@ -1,6 +1,4 @@
 import type { NextPage } from "next";
-import { useRouter } from "next/router";
-import { useState } from "react";
 
 const Home: NextPage = () => {
   // const [channelId, setChannelId] = useState("");
